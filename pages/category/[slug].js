@@ -112,7 +112,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (ctx) => {
   const dynamic = ctx.params !== undefined ? ctx.params.slug : "404";
   const cat = await fetch(
-    `${process.env.NEXT_PUBLIC_BLOG_URL}/wp/v2/categories?slug=${dynamic}`
+    `https://coalitioncrew.com/wp-json/wp/v2/categories?slug=${dynamic}`
   );
   const posts = await cat.json();
 
@@ -127,7 +127,7 @@ export const getStaticProps = async (ctx) => {
   const id = posts[0].id;
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BLOG_URL}/wpr/v1/category/${id}`
+    `https://coalitioncrew.com/wp-json/wpr/v1/category/${id}`
   ).then();
 
   const postsData = await res.json();
