@@ -371,9 +371,7 @@ export default function Home({ data }) {
 }
 
 export const getStaticProps = async () => {
-  const data = await fetch(
-    `https://coalitioncrew.com/wp-json/wp/v2/pages/4877`
-  ).then();
+  const data = await fetch(`${NEXT_PUBLIC_BLOG_URL}/wp/v2/pages/4877`).then();
   const home = await data.json();
 
   return {
