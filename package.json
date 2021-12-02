@@ -1,0 +1,30 @@
+{
+  "name": "next-js-ts-tailwind-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "framer-motion": "^5.3.1",
+    "moment": "^2.29.1",
+    "next": "11.0.1",
+    "next-seo": "^4.28.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-intersection-observer": "^8.32.3"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.13",
+    "autoprefixer": "^10.2.6",
+    "eslint": "7.30.0",
+    "eslint-config-next": "11.0.1",
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.4",
+    "typescript": "4.3.5"
+  }
+}
