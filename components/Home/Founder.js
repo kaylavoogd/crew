@@ -10,6 +10,7 @@ export default function Founder() {
             className="underline text-xl font-semibold"
             href="https://www.instagram.com/peterjvoogd"
             target="_blank"
+            rel="noreferrer"
           >
             Peter
           </a>{" "}
@@ -18,6 +19,7 @@ export default function Founder() {
             className="underline  text-xl font-semibold"
             href="https://www.instagram.com/kaylavoogd"
             target="_blank"
+            rel="noreferrer"
           >
             Kayla Voogd
           </a>{" "}
@@ -25,7 +27,11 @@ export default function Founder() {
         <p>
           They are the founders of the Forbes featured Game Changers Academy{" "}
           <br /> ({" "}
-          <a href="https://GameChangersMovement.com" target="_blank">
+          <a
+            href="https://GameChangersMovement.com"
+            target="_blank"
+            rel="noreferrer"
+          >
             GameChangersMovement.com
           </a>{" "}
           ), which was created in 2013. They both have a deep passion for
@@ -45,6 +51,7 @@ export default function Founder() {
             className="underline"
             href="https://PeterJVoogd.com"
             target="_blank"
+            rel="noreferrer"
           >
             PeterJVoogd.com.
           </a>

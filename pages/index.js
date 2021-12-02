@@ -9,6 +9,8 @@ import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import useCountDown from "../hooks/useCountDown";
 import Founder from "../components/Home/Founder";
+import dynamic from "next/dynamic";
+
 // type Props = {
 //   data: {
 //     title: { rendered: string };
@@ -110,6 +112,7 @@ export default function Home({ data }) {
     { src: "335.png", animation: secondImg },
     { src: "162.png", animation: secondImg },
   ];
+
   const [shouldShowActions, setShouldShowActions] = useState(true);
   useEffect(() => {
     if (inView) {
@@ -296,7 +299,7 @@ export default function Home({ data }) {
                 animate={image.animation}
                 key={index}
               >
-                <img
+                <Image
                   alt={"Cheetah"}
                   src={"/img/" + image.src}
                   width={620}
@@ -335,6 +338,7 @@ export default function Home({ data }) {
                     Once minted or bought on OpenSea, please fill out this{" "}
                     <a
                       target="_blank"
+                      rel="noreferrer"
                       href="https://www.gamechangersmovemement.com/crew"
                       className="underline"
                     >
