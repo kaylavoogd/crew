@@ -65,7 +65,7 @@ export default function authorPost({ postsData, categoryTitle }) {
 
 export const getStaticPaths = async () => {
   const res = await fetch(
-    `https://coalitioncrew.com/wp-json/wpr/v1/authors`
+    `${process.env.NEXT_PUBLIC_BLOG_URL}/wpr/v1/authors`
   ).then();
   const data = await res.json();
 
@@ -86,7 +86,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const res = await fetch(
-    `https://coalitioncrew.com/wp-json/wpr/v1/author/${params.slug
+    `${process.env.NEXT_PUBLIC_BLOG_URL}/wpr/v1/author/${params.slug
       .split("-")
       .pop()}`
   ).then();

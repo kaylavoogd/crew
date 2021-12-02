@@ -54,7 +54,7 @@ const mspeaker = [
 ];
 export default function Home({ data }) {
   const { ref, inView } = useInView({ threshold: 0.2 });
-  const { showReleaseDate, coundownText } = useCountDown("2021-12-05 8:00 AM");
+  const { showReleaseDate, coundownText } = useCountDown("2021-12-04 10:00 AM");
 
   const animation = useAnimation();
   const firstImg = useAnimation();
@@ -338,8 +338,8 @@ export default function Home({ data }) {
                     Once minted or bought on OpenSea, please fill out this{" "}
                     <a
                       target="_blank"
-                      rel="noreferrer"
                       href="https://www.gamechangersmovemement.com/crew"
+                      rel="noreferrer"
                       className="underline"
                     >
                       form
@@ -372,7 +372,7 @@ export default function Home({ data }) {
 
 export const getStaticProps = async () => {
   const data = await fetch(
-    `https://coalitioncrew.com/wp-json/wp/v2/pages/4877`
+    `${process.env.NEXT_PUBLIC_BLOG_URL}/wp/v2/pages/4877`
   ).then();
   const home = await data.json();
 

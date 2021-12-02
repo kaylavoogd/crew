@@ -35,7 +35,7 @@ export default function Post({ postsData }) {
       // comment_parent: comment.comment_ID
     };
     const sendReqData = {
-      url: `https://coalitioncrew.com/wp-json/wpr/v1/add-comment-next`,
+      url: `${process.env.NEXT_PUBLIC_BLOG_URL}/wpr/v1/add-comment-next`,
       data,
       method: "POST",
     };
@@ -49,7 +49,7 @@ export default function Post({ postsData }) {
     <>
       <NextSeo
         title={title.rendered}
-        canonical={`https://coalitioncrew.com/wp-json/posts/${slug}`}
+        canonical={`${process.env.NEXT_PUBLIC_BLOG_URL}/posts/${slug}`}
         openGraph={{
           type: "article",
           locale: "en_US",
@@ -208,7 +208,7 @@ export default function Post({ postsData }) {
 
 export const getStaticPaths = async () => {
   const res = await fetch(
-    `https://coalitioncrew.com/wp-json/wpr/v1/posts`
+    `${process.env.NEXT_PUBLIC_BLOG_URL}/wpr/v1/posts`
   ).then();
 
   const data = await res.json();
@@ -228,7 +228,7 @@ export const getStaticProps = async (ctx) => {
   const slug = ctx.params !== undefined ? ctx.params.slug : "";
 
   const res = await fetch(
-    `https://coalitioncrew.com/wp-json/wpr/v1/post/${slug}`
+    `${process.env.NEXT_PUBLIC_BLOG_URL}/wpr/v1/post/${slug}`
   ).then();
 
   const postsData = await res.json();
