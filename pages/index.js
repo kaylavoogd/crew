@@ -63,54 +63,54 @@ export default function Home({ data }) {
   const fourthImg = useAnimation();
   const slideLeft = useAnimation();
   const imagePath = [
-    { src: "12.png", animation: secondImg },
-    { src: "13.png", animation: firstImg },
-    { src: "14.png", animation: fourthImg },
-    { src: "335.png", animation: secondImg },
-    { src: "slideshow/100.png", animation: thirdImg },
-    { src: "slideshow/102.png", animation: thirdImg },
-    { src: "slideshow/Cyndi Lauper Cheetah.png", animation: thirdImg },
-    { src: "slideshow/Serena Williams Cheetah.png", animation: thirdImg },
-    { src: "slideshow/Skylar Diggins-Smith Cheetah.png", animation: thirdImg },
-    { src: "slideshow/Wonder Woman Cheetah.png", animation: thirdImg },
-    { src: "slideshow/923.png", animation: thirdImg },
-    { src: "slideshow/989.png", animation: thirdImg },
-    { src: "slideshow/995.png", animation: thirdImg },
-    { src: "slideshow/1014.png", animation: thirdImg },
-    { src: "slideshow/1007.png", animation: thirdImg },
-    { src: "slideshow/1017.png", animation: thirdImg },
-    { src: "slideshow/105.png", animation: thirdImg },
-    { src: "slideshow/107.png", animation: thirdImg },
-    { src: "slideshow/108.png", animation: thirdImg },
-    { src: "slideshow/109.png", animation: thirdImg },
-    { src: "slideshow/110.png", animation: thirdImg },
-    { src: "slideshow/112.png", animation: thirdImg },
-    { src: "slideshow/124.png", animation: thirdImg },
-    { src: "slideshow/139.png", animation: thirdImg },
-    { src: "slideshow/140.png", animation: thirdImg },
-    { src: "slideshow/92.png", animation: thirdImg },
-    { src: "slideshow/93.png", animation: thirdImg },
-    { src: "Damian lillard.png", animation: firstImg },
-    { src: "james harden1.png", animation: secondImg },
-    { src: "jazz 1.png", animation: thirdImg },
-    { src: "Luke doncic.png", animation: fourthImg },
-    { src: "MGK.png", animation: firstImg },
-    { src: "pink panther.png", animation: secondImg },
-    { src: "rapper 1.png", animation: thirdImg },
-    { src: "snowbording cheetah.jpg", animation: fourthImg },
-    { src: "Tom Brady 1.png", animation: firstImg },
-    { src: "17.png", animation: firstImg },
-    { src: "18.png", animation: secondImg },
-    { src: "19.png", animation: secondImg },
-    { src: "139.png", animation: secondImg },
-    { src: "147.png", animation: secondImg },
-    { src: "148.png", animation: secondImg },
-    { src: "149.png", animation: secondImg },
-    { src: "5521.png", animation: secondImg },
-    { src: "569.png", animation: secondImg },
-    { src: "520.png", animation: secondImg },
-    { src: "335.png", animation: secondImg },
-    { src: "162.png", animation: secondImg },
+    { src: "slideshow/boxer 2.png", animation: secondImg },
+    { src: "slideshow/boxer.png", animation: firstImg },
+    { src: "slideshow/dennis-3.png", animation: fourthImg },
+    { src: "slideshow/diver.png", animation: secondImg },
+    { src: "slideshow/mobster.png", animation: thirdImg },
+    { src: "slideshow/pilot.png", animation: thirdImg },
+    { src: "slideshow/pirates cheetah.png", animation: thirdImg },
+    { src: "slideshow/russell.png", animation: thirdImg },
+    { src: "slideshow/surfer-2.png", animation: thirdImg },
+    { src: "slideshow/tiger woods.png", animation: thirdImg },
+    { src: "slideshow/zombie cheetah.png", animation: thirdImg },
+    // { src: "slideshow/989.png", animation: thirdImg },
+    // { src: "slideshow/995.png", animation: thirdImg },
+    // { src: "slideshow/1014.png", animation: thirdImg },
+    // { src: "slideshow/1007.png", animation: thirdImg },
+    // { src: "slideshow/1017.png", animation: thirdImg },
+    // { src: "slideshow/105.png", animation: thirdImg },
+    // { src: "slideshow/107.png", animation: thirdImg },
+    // { src: "slideshow/108.png", animation: thirdImg },
+    // { src: "slideshow/109.png", animation: thirdImg },
+    // { src: "slideshow/110.png", animation: thirdImg },
+    // { src: "slideshow/112.png", animation: thirdImg },
+    // { src: "slideshow/124.png", animation: thirdImg },
+    // { src: "slideshow/139.png", animation: thirdImg },
+    // { src: "slideshow/140.png", animation: thirdImg },
+    // { src: "slideshow/92.png", animation: thirdImg },
+    // { src: "slideshow/93.png", animation: thirdImg },
+     { src: "slideshow/1.gif", animation: firstImg },
+     { src: "slideshow/2.gif", animation: secondImg },
+     { src: "slideshow/3.png", animation: thirdImg },
+     { src: "slideshow/4.png", animation: fourthImg },
+     { src: "slideshow/5.png", animation: firstImg },
+     { src: "slideshow/6.png", animation: secondImg },
+     { src: "slideshow/7.png", animation: thirdImg },
+     { src: "slideshow/8.png", animation: fourthImg },
+     { src: "slideshow/9.png", animation: firstImg },
+     { src: "slideshow/10.jpeg", animation: firstImg },
+     { src: "slideshow/11.png", animation: secondImg },
+    // { src: "19.png", animation: secondImg },
+    // { src: "139.png", animation: secondImg },
+    // { src: "147.png", animation: secondImg },
+    // { src: "148.png", animation: secondImg },
+    // { src: "149.png", animation: secondImg },
+    // { src: "5521.png", animation: secondImg },
+    // { src: "569.png", animation: secondImg },
+    // { src: "520.png", animation: secondImg },
+    // { src: "335.png", animation: secondImg },
+    // { src: "162.png", animation: secondImg },
   ];
 
   const [shouldShowActions, setShouldShowActions] = useState(true);
@@ -257,15 +257,18 @@ export default function Home({ data }) {
           <div className="post-content container mx-auto text-lg p-4 text-center md:text-left ">
             <div className="first-section">
               <h1 className="text-gray-900 text-left our-mission font-bold text-3xl border-b-2 pb-3 border-gray-800 md:w-1/4">
-                Our New Mission
+                Our Mission
               </h1>
               <section className="grid md:grid-cols-2 items-center">
                 <div
-                  className="about-mission"
-                  dangerouslySetInnerHTML={{
-                    __html: `${data.acf.first_section} ${data.acf.second_section}`,
-                  }}
-                ></div>
+                  className="about-mission">          
+                <p>Hi! Welcome to the Coalition Crew! This is a limited collection of 5000 unique Cheetah NFTs living on the Ethereum blockchain. This project is technically broken up into three collections.</p>
+                <p>1st Collection - Coalition Crew (OG COLLECTION) Only 1010 avail.
+*Update - Sold out in less than a day!*</p>
+                <p>2nd Collection - Auction Cheetahs - 20 avail. These qualify for VIP access to all live events. The auction begins Jan 8th. Please visit our <a target="_blank" href="http://discord.gg/3nKRBcDS33" rel="noreferrer" class="underline"> Discord</a> for more info on this! </p>
+                <p>3rd Collection - Coalition Crew 2.0 - Only 3970 avail. This will wrap up the collection for the Coalition Crew project. Mint price is .09 ETH and you can mint up to 5. This collection will begin minting Jan 26th at 10am PST/1pm EST.</p>
+                <p>Out of the 5000 total, only 50 qualify for VIP access. Please visit our <a target="_blank" href="http://discord.gg/3nKRBcDS33" rel="noreferrer" class="underline"> Discord</a> Discord for more info on which ones qualify for VIP.</p>
+                </div>
                 <div className="flex items-center justify-center relative">
                   {" "}
                   <motion.div
@@ -288,7 +291,7 @@ export default function Home({ data }) {
           <div className="flex justify-center">
             <div className="w-36 h-2 flex  bg-gray-700 my-9"></div>
           </div>
-
+          
           <div
             ref={ref}
             className="gallery relative justify-items-center flex gap-8  md:grid-cols-4 "
@@ -308,6 +311,11 @@ export default function Home({ data }) {
               </motion.div>
             ))}
           </div>
+          <div class="flex flex-col  right-64 bottom-11   justify-center items-center">
+            <button id="cta2" class=" roadmap  text-3xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor"><a target="_blank" href="https://drive.google.com/file/d/1JPAXXLlR-vTpeGe3rHmxeq4XC3US3hv5/view?usp=sharing">Roadmap</a></button>
+            <span class="text-2xl font-bold text-gray-800 mb-4"></span>
+            </div>
+            
           <div className="flex justify-center">
             <div className="max-w-6xl overflow-hidden w-36 h-2 flex mt-8  bg-gray-800 "></div>
           </div>
