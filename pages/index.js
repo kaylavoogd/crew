@@ -267,7 +267,7 @@ export default function Home({ data }) {
 *Update - Sold out in less than a day!*</p>
                 <p>2nd Collection - Auction Cheetahs - 20 avail. These qualify for VIP access to all live events. The auction begins Jan 8th. Please visit our <a target="_blank" href="http://discord.gg/3nKRBcDS33" rel="noreferrer" className="underline"> Discord</a> for more info on this! </p>
                 <p>3rd Collection - Coalition Crew 2.0 - Only 3970 avail. This will wrap up the collection for the Coalition Crew project. Mint price is .09 ETH and you can mint up to 5. This collection will begin minting Jan 26th at 10am PST/1pm EST.</p>
-                <p>Out of the 5000 total, only 50 qualify for VIP access. Please visit our <a target="_blank" href="http://discord.gg/3nKRBcDS33" rel="noreferrer" className="underline"> Discord</a> Discord for more info on which ones qualify for VIP.</p>
+                <p>Out of the 5000 total, only 50 qualify for VIP access. Please visit our <a target="_blank" href="http://discord.gg/3nKRBcDS33" rel="noreferrer" className="underline"> Discord</a> for more info on which ones qualify for VIP.</p>
                 </div>
                 <div className="flex items-center justify-center relative">
                   {" "}
