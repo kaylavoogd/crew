@@ -265,9 +265,9 @@ export default function Home({ data }) {
                 <p>Hi! Welcome to the Coalition Crew! This is a limited collection of 5000 unique Cheetah NFTs living on the Ethereum blockchain. This project is technically broken up into three collections.</p>
                 <p>1st Collection - Coalition Crew (OG COLLECTION) Only 1010 avail.
 *Update - Sold out in less than a day!*</p>
-                <p>2nd Collection - Auction Cheetahs - 20 avail. These qualify for VIP access to all live events. The auction begins Jan 8th. Please visit our <a target="_blank" href="http://discord.gg/3nKRBcDS33" rel="noreferrer" class="underline"> Discord</a> for more info on this! </p>
+                <p>2nd Collection - Auction Cheetahs - 20 avail. These qualify for VIP access to all live events. The auction begins Jan 8th. Please visit our <a target="_blank" href="http://discord.gg/3nKRBcDS33" rel="noreferrer" className="underline"> Discord</a> for more info on this! </p>
                 <p>3rd Collection - Coalition Crew 2.0 - Only 3970 avail. This will wrap up the collection for the Coalition Crew project. Mint price is .09 ETH and you can mint up to 5. This collection will begin minting Jan 26th at 10am PST/1pm EST.</p>
-                <p>Out of the 5000 total, only 50 qualify for VIP access. Please visit our <a target="_blank" href="http://discord.gg/3nKRBcDS33" rel="noreferrer" class="underline"> Discord</a> Discord for more info on which ones qualify for VIP.</p>
+                <p>Out of the 5000 total, only 50 qualify for VIP access. Please visit our <a target="_blank" href="http://discord.gg/3nKRBcDS33" rel="noreferrer" className="underline"> Discord</a> Discord for more info on which ones qualify for VIP.</p>
                 </div>
                 <div className="flex items-center justify-center relative">
                   {" "}
@@ -311,9 +311,9 @@ export default function Home({ data }) {
               </motion.div>
             ))}
           </div>
-          <div class="flex flex-col  right-64 bottom-11   justify-center items-center">
-            <button id="cta2" class=" roadmap  text-3xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor"><a target="_blank" href="https://drive.google.com/file/d/1JPAXXLlR-vTpeGe3rHmxeq4XC3US3hv5/view?usp=sharing">Roadmap</a></button>
-            <span class="text-2xl font-bold text-gray-800 mb-4"></span>
+          <div className="flex flex-col  right-64 bottom-11   justify-center items-center">
+            <button id="cta2" className=" roadmap  text-3xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor"><a target="_blank" href="https://drive.google.com/file/d/1JPAXXLlR-vTpeGe3rHmxeq4XC3US3hv5/view?usp=sharing">Roadmap</a></button>
+            <span className="text-2xl font-bold text-gray-800 mb-4"></span>
             </div>
             
           <div className="flex justify-center">
