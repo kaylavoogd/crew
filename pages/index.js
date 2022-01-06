@@ -246,7 +246,7 @@ export default function Home({ data }) {
             >
               Mint Here
             </button>
-
+            <p className="date-text">Jan 26th 10am PST/1pm EST</p>
             <span className="text-2xl font-bold text-gray-800 mb-4">
               {showReleaseDate && coundownText}
             </span>
@@ -316,7 +316,7 @@ export default function Home({ data }) {
           </div>
           <div className="flex flex-col  right-64 bottom-11   justify-center items-center">
             <button id="cta2" className=" roadmap  text-3xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor">
-              <a target="_blank" href="https://drive.google.com/file/d/1JPAXXLlR-vTpeGe3rHmxeq4XC3US3hv5/view?usp=sharing" rel="noreferrer">Roadmap</a>
+              <a target="_blank" href="https://drive.google.com/file/d/1GFBtAyqhEv1PqX94O3r7y4tbThliU9Ib/view" rel="noreferrer">The Roadmap</a>
             </button>
             <span className="text-2xl font-bold text-gray-800 mb-4"></span>
             </div>
