@@ -311,6 +311,9 @@ export default function Home({ data }) {
               </motion.div>
             ))}
           </div>
+          <div className="flex justify-center">
+            <div className="max-w-6xl overflow-hidden w-36 h-2 flex mt-8  bg-gray-800 "></div>
+          </div>
           <div className="flex flex-col  right-64 bottom-11   justify-center items-center">
             <button id="cta2" className=" roadmap  text-3xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor">
               <a target="_blank" href="https://drive.google.com/file/d/1JPAXXLlR-vTpeGe3rHmxeq4XC3US3hv5/view?usp=sharing" rel="noreferrer">Roadmap</a>
@@ -318,9 +321,7 @@ export default function Home({ data }) {
             <span className="text-2xl font-bold text-gray-800 mb-4"></span>
             </div>
             
-          <div className="flex justify-center">
-            <div className="max-w-6xl overflow-hidden w-36 h-2 flex mt-8  bg-gray-800 "></div>
-          </div>
+          
           <div
             id="banner2"
             className=" relative bg-value w-full  h-screen bg-cover flex flex-col justify-between "
