@@ -28,6 +28,10 @@ main {
 .roadmap{
   margin-top: 1.5em;
 }
+.date-text{
+font-family:Sen,sans-serif;
+color:#fff;
+}
 .flex-col{
   flex-direction: column !important;
 }
