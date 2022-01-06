@@ -257,7 +257,7 @@ export default function Home({ data }) {
           <div className="post-content container mx-auto text-lg p-4 text-center md:text-left ">
             <div className="first-section">
               <h1 className="text-gray-900 text-left our-mission font-bold text-3xl border-b-2 pb-3 border-gray-800 md:w-1/4">
-                Our Mission
+                Our New Mission
               </h1>
               <section className="grid md:grid-cols-2 items-center">
                 <div
