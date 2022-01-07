@@ -104,8 +104,8 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          <div className="my-8 center">© 2021 COALITION CREW LLC</div>
-          <span className="text-cheetah center">
+          <div className="my-8">© 2021 COALITION CREW LLC</div>
+          <span className="text-cheetah">
             <Link href="/">COALITION CREW Terms & Conditions</Link>{" "}
           </span>
         </div>

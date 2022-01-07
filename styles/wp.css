@@ -25,19 +25,6 @@ main {
   width: 100%;
   clip-path: polygon(0% 0%, 80% 0, 89% 48%, 82% 100%, 0% 100%);
 }
-.roadmap{
-  margin-top: 1.5em;
-}
-.date-text{
-font-family:Sen,sans-serif;
-color:#fff;
-}
-.flex-col{
-  flex-direction: column !important;
-}
-.center{
-  text-align: center;
-}
 .about-mission,
 .value-section,
 .fourth-section {
@@ -198,16 +185,7 @@ color:#fff;
 .bg-network2 {
   background-position: 74% 0 !important;
 }
-@media screen and  (max-width: 500px) {
-  #banner2,
-  #banner3,
-  #banner4,
-  #banner5 {
-    height: 20vh !important;
-    background-position: 50% !important;
-  }
-}
-@media screen and  (min-width: 600px) and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   #banner2,
   #banner3,
   #banner4,
