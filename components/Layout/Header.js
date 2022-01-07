@@ -1,43 +1,5 @@
 import Image from "next/image";
-import Web3 from "web3";
-import React, { useEffect, useState } from "react";
-import Web3Modal from "web3modal";
-
 export default function Header() {
-  const[connectwallettext, setconnectwallettext] = useState('Connected Wallet');
-  useEffect(() => {
-    connect_wallet()
-    //fetch_data()
-  }, [])
-  
-  async function connect_wallet(){
-    if(Web3.givenProvider){
-      const providerOptions = {
-        /* See Provider Options Section */
-      };
-      
-      const web3Modal = new Web3Modal({
-        network: "mainnet", // optional
-        cacheProvider: true, // optional
-        providerOptions // required
-      });
-      
-      const provider = await web3Modal.connect();
-      const web3 = new Web3(provider);
-  
-      web3.eth.net.getId().then((result) => { 
-        setconnectwallettext("Connected");
-      console.log("Network id: "+result)
-      if(result !== 1){
-          alert("Wrong Network Selected. Select Ethereum Mainnet");
-        }
-      })
-  
-    }else{
-      alert("Web3 Not Found. Try refreshing if you have metamask installed.");
-    }
-  
-  }
   return (
     <header className="md:px-20 px-5">
       <nav className=" flex justify-end  gap-8 pt-4 mb-3">
@@ -144,7 +106,7 @@ export default function Header() {
           id="cta2"
           className="border uppercase italic font-bold border-iconColor mb-3 px-4 text-iconColor"
         >
-          {connectwallettext}
+          Connect wallet
         </button>
       </div>
     </header>
