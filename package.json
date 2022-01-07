@@ -17,7 +17,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-intersection-observer": "^8.32.3",
-    "web3": "^1.6.1"
+    "web3": "^1.6.1",
+    "web3modal": "^1.9.4"
   },
   "devDependencies": {
     "@types/react": "17.0.13",
