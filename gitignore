@@ -1,8 +1,0 @@
-/build
-/node_modules
-
-/config/local.env
-/src/messages/i18n/po/*.mo
-
-npm-error.log
-yarn-error.log
