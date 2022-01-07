@@ -5,7 +5,7 @@ export const presale_price = "0.08";
 //export const speedy_nodes = "https://speedy-nodes-nyc.moralis.io/76b6a1ab4265c540f2ccd51c/eth/rinkeby"; 
 export const speedy_nodes = "https://speedy-nodes-nyc.moralis.io/76b6a1ab4265c540f2ccd51c/eth/mainnet";
 
-export const contract_address = "0x529A4e15b3ce13523417f945ecD0959FF71E0a9E";
+export const contract_address = ""; //0x529A4e15b3ce13523417f945ecD0959FF71E0a9E
 export const contract_abi = [
 	{
 		"inputs": [],
