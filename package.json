@@ -16,7 +16,8 @@
     "next-seo": "^4.28.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-intersection-observer": "^8.32.3"
+    "react-intersection-observer": "^8.32.3",
+    "web3": "^1.6.1"
   },
   "devDependencies": {
     "@types/react": "17.0.13",
