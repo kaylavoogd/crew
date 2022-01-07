@@ -5,16 +5,11 @@ import shuffle from "../utils/shuffle-image";
 import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
 import { GetStaticProps } from "next";
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import useCountDown from "../hooks/useCountDown";
 import Founder from "../components/Home/Founder";
 import dynamic from "next/dynamic";
-import Web3 from "web3";
-import React, { useEffect, useState } from "react";
-import Web3Modal from "web3modal";
-import { contract_address, contract_abi, presale_price, phase1_tokenPrice, phase2_tokenPrice, speedy_nodes} from '../config';
-
 
 // type Props = {
 //   data: {
@@ -58,238 +53,6 @@ const mspeaker = [
   { name: "Tai Lopez", itemsToShow: "Tai-Lopez-min.jpg" },
 ];
 export default function Home({ data }) {
-
-  const[mintingcount, setmintingcount] = useState(1)
-  const[totalAvailableSupply,settotalAvailableSupply] = useState('0')
-  const[connectwallettext, setconnectwallettext] = useState('Connected Wallet');
-  useEffect(() => {
-    //connect_wallet()
-    fetch_data()
-  }, [])
-  
-  async function connect_wallet(){
-    if(Web3.givenProvider){
-      const providerOptions = {
-        /* See Provider Options Section */
-      };
-      
-      const web3Modal = new Web3Modal({
-        network: "mainnet", // optional
-        cacheProvider: true, // optional
-        providerOptions // required
-      });
-      
-      const provider = await web3Modal.connect();
-      const web3 = new Web3(provider);
-  
-      web3.eth.net.getId().then((result) => { 
-        setconnectwallettext("Connected");
-      console.log("Network id: "+result)
-      if(result !== 1){
-          alert("Wrong Network Selected. Select Ethereum Mainnet");
-        }
-      })
-  
-    }else{
-      alert("Web3 Not Found. Try refreshing if you have metamask installed.");
-    }
-  
-  }
-  async function fetch_data(){
-  
-    const web3 = new Web3(speedy_nodes);
-    const contract = new web3.eth.Contract(contract_abi, contract_address);
-    //await Web3.givenProvider.enable()
-  
-    contract.methods.totalSupply().call((err,result) => {
-        console.log("error: "+err);
-        if(result != null){
-            settotalAvailableSupply(result)
-        }
-    })
-  
-  }
-  async function show_error_alert(error){
-    let temp_error = error.message.toString();
-    console.log(temp_error);
-    let error_list = [
-      "It's not time yet",
-      "Sent Amount Wrong",
-      "Max Supply Reached",
-      "You have already Claimed Free Nft.",
-      "Presale have not started yet.",
-      "Presale Ended.",
-      "You are not Whitelisted.",
-      "Sent Amount Not Enough",
-      "Max 20 Allowed.",
-      "insufficient funds",
-      "mint at least one token",
-      "Max 3 Nfts Per Transaction Allowed.",
-      "Not enough tokens left",
-      "incorrect ether amount",
-      "Presale have not started yet.",
-      "Presale Ended.",
-      "Sale is Paused.",
-      "You are not whitelisted.",
-      "Max 3 Nft Per Wallet Allowed."
-      
-    ]
-  
-    for(let i=0;i<error_list.length;i++){
-      if(temp_error.includes(error_list[i])){
-       // set ("Transcation Failed")
-        alert(error_list[i]);
-      }
-    }
-  }
-  function mint_nft(){
-    let phase2_startTime = 1638817331;    
-    let phase1_startTime = 1638813600;
-    let presale_startTime = 1638640800; 
-  console.log(mintingcount);
-    let current_time = Math.floor(Date.now() / 1000);
-  // presale
-    if(current_time > presale_startTime && current_time < phase1_startTime){
-      buy_Presale();
-    }
-    if(current_time > phase1_startTime && current_time < phase2_startTime){
-      buy_phase1();
-    }
-    if(current_time > phase2_startTime ){
-      buy_phase2();
-    }
-    if(current_time < presale_startTime){
-      alert("Sale Not Started Yet.")
-    }
-  }
-  async function buy_Presale(){
-  
-    if(Web3.givenProvider ){ 
-  
-      const web3 = new Web3(Web3.givenProvider);
-      await Web3.givenProvider.enable()
-      const contract = new web3.eth.Contract(contract_abi, contract_address);
-  
-      const addresses = await web3.eth.getAccounts()
-      const address = addresses[0]
-      console.log("addresses[0]: "+addresses[0])
-      // console.log("addresses[1]: "+addresses[1])
-      // console.log("Default address: "+await web3.eth.defaultAccount)
-  
-      let price = presale_price * parseInt(mintingcount);
-      price = Math.round(price * 100) / 100;
-  
-      try{
-        const estemated_Gas = await contract.methods.buy_Presale(mintingcount.toString()).estimateGas({
-          from : address, 
-          value: web3.utils.toWei(price.toString(),"ether"),
-          maxPriorityFeePerGas: null,
-          maxFeePerGas: null
-        });
-        console.log(estemated_Gas)
-        const result = await contract.methods.buy_Presale(mintingcount.toString()).send({
-          from : address,
-          value: web3.utils.toWei(price.toString(),"ether"),
-          gas: estemated_Gas,
-          maxPriorityFeePerGas: null,
-          maxFeePerGas: null
-        })
-      }catch(e){
-        show_error_alert(e);
-      }
-  
-     // await contract.methods.tokenByIndex(i).call();
-    }else{
-      alert("Web3 Not Found. Try refreshing if you have metamask installed.");
-    }
-  
-  }
-  async function buy_phase1(){
-  
-    if(Web3.givenProvider ){ 
-  
-      const web3 = new Web3(Web3.givenProvider);
-      await Web3.givenProvider.enable()
-      const contract = new web3.eth.Contract(contract_abi, contract_address);
-  
-      const addresses = await web3.eth.getAccounts()
-      const address = addresses[0]
-      console.log("addresses[0]: "+addresses[0])
-      // console.log("addresses[1]: "+addresses[1])
-      // console.log("Default address: "+await web3.eth.defaultAccount)
-  
-      let price = phase1_tokenPrice * parseInt(mintingcount);
-      price = Math.round(price * 100) / 100;
-  
-      try{
-        const estemated_Gas = await contract.methods.buy_phase1(mintingcount.toString()).estimateGas({
-          from : address, 
-          value: web3.utils.toWei(price.toString(),"ether"),
-          maxPriorityFeePerGas: null,
-          maxFeePerGas: null
-        });
-        console.log(estemated_Gas)
-        const result = await contract.methods.buy_phase1(mintingcount.toString()).send({
-          from : address,
-          value: web3.utils.toWei(price.toString(),"ether"),
-          gas: estemated_Gas,
-          maxPriorityFeePerGas: null,
-          maxFeePerGas: null
-        })
-      }catch(e){
-        show_error_alert(e);
-      }
-  
-     // await contract.methods.tokenByIndex(i).call();
-    }else{
-      alert("Web3 Not Found. Try refreshing if you have metamask installed.");
-    }
-  
-  }
-  async function buy_phase2(){
-  
-    if(Web3.givenProvider ){ 
-  
-      const web3 = new Web3(Web3.givenProvider);
-      await Web3.givenProvider.enable()
-      const contract = new web3.eth.Contract(contract_abi, contract_address);
-  
-      const addresses = await web3.eth.getAccounts()
-      const address = addresses[0]
-      console.log("addresses[0]: "+addresses[0])
-      // console.log("addresses[1]: "+addresses[1])
-      // console.log("Default address: "+await web3.eth.defaultAccount)
-  
-      let price = phase2_tokenPrice * parseInt(mintingcount);
-      price = Math.round(price * 100) / 100;
-  
-      try{
-        const estemated_Gas = await contract.methods.buy_phase2(mintingcount.toString()).estimateGas({
-          from : address, 
-          value: web3.utils.toWei(price.toString(),"ether"),
-          maxPriorityFeePerGas: null,
-          maxFeePerGas: null
-        });
-        console.log(estemated_Gas)
-        const result = await contract.methods.buy_phase2(mintingcount.toString()).send({
-          from : address,
-          value: web3.utils.toWei(price.toString(),"ether"),
-          gas: estemated_Gas,
-          maxPriorityFeePerGas: null,
-          maxFeePerGas: null
-        })
-      }catch(e){
-        show_error_alert(e);
-      }
-  
-     // await contract.methods.tokenByIndex(i).call();
-    }else{
-      alert("Web3 Not Found. Try refreshing if you have metamask installed.");
-    }
-  
-  }
-
-
   const { ref, inView } = useInView({ threshold: 0.2 });
   const { showReleaseDate, coundownText } = useCountDown("2021-12-04 10:00 AM");
 
@@ -453,7 +216,7 @@ export default function Home({ data }) {
         description="Youtube Twitter Instagram Welcome to the Coalition Mint here This is the NFT for Game Changers. The Coalition Crew is an exclusive collection of 7100 unique Cheetah NFTs living on the Ethereum blockchain. It’s estimated that as of 2021, there are only 7100 cheetahs left in the wild. Cheetahs are currently listed as vulnerable and &hellip; Home Read More &raquo;"
         openGraph={{
           description:
-            "Youtube Twitter Instagram Welcome to the Coalition Mint here This is the NFT for Game Changers. The Coalition Crew is an exclusive collection of 7100 unique Cheetah NFTs living on the Ethereum blockchain. It’s estimated that as of 2021, there are only 7100 cheetahs left in the wild. Cheetahs are currently listed as vulnerable and &hellip; Home Read More &raquo;",
+            "Youtube Twitter Instagram Welcome to the Coalition Mint here This is the NFT for Game Changers.  The Coalition Crew is an exclusive collection of 7100 unique Cheetah NFTs living on the Ethereum blockchain. It’s estimated that as of 2021, there are only 7100 cheetahs left in the wild. Cheetahs are currently listed as vulnerable and &hellip; Home Read More &raquo;",
           title: "Home - Coalitioncrew",
           type: "website",
           locale: "en_US",
@@ -477,25 +240,13 @@ export default function Home({ data }) {
           <Header />
 
           <div className="flex flex-col  md:absolute right-64 bottom-11   justify-center items-center">
-          <select onChange={e => {setmintingcount(e.currentTarget.value); }} className="text-1xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-
-                      </select>
-
-                                               
             <button
-            onClick={mint_nft}
               id="cta2"
               className="  text-3xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor"
             >
               Mint Here
             </button>
             <p className="date-text">Jan 26th 10am PST/1pm EST</p>
-            <span className="text-2xl font-bold text-gray-800 mb-1">
-              Total Minted: {totalAvailableSupply} / 7080
-            </span>
             <span className="text-2xl font-bold text-gray-800 mb-4">
               {showReleaseDate && coundownText}
             </span>
@@ -510,14 +261,14 @@ export default function Home({ data }) {
               </h1>
               <section className="grid md:grid-cols-2 items-center">
                 <div
-                  className="about-mission">
-                  <p>Hi! Welcome to the Coalition Crew! This is a limited collection of 5000 unique Cheetah NFTs living on the Ethereum blockchain. This project is technically broken up into three collections.</p>
+                  className="about-mission">          
+                <p>Hi! Welcome to the Coalition Crew! This is a limited collection of 5000 unique Cheetah NFTs living on the Ethereum blockchain. This project is technically broken up into three collections.</p>
                 <p>1st Collection - Coalition Crew (OG COLLECTION) Only 1010 avail.
 *Update - Sold out in less than a day!*</p>
                 <p>2nd Collection - Auction Cheetahs - 20 avail. These qualify for VIP access to all live events. The auction begins Jan 8th. Please visit our <a target="_blank" href="http://discord.gg/3nKRBcDS33" rel="noreferrer" className="underline"> Discord</a> for more info on this! </p>
                 <p>3rd Collection - Coalition Crew 2.0 - Only 3970 avail. This will wrap up the collection for the Coalition Crew project. Mint price is .09 ETH and you can mint up to 5. This collection will begin minting Jan 26th at 10am PST/1pm EST.</p>
                 <p>Out of the 5000 total, only 50 qualify for VIP access. Please visit our <a target="_blank" href="http://discord.gg/3nKRBcDS33" rel="noreferrer" className="underline"> Discord</a> for more info on which ones qualify for VIP.</p>
-                  </div>
+                </div>
                 <div className="flex items-center justify-center relative">
                   {" "}
                   <motion.div
@@ -540,7 +291,7 @@ export default function Home({ data }) {
           <div className="flex justify-center">
             <div className="w-36 h-2 flex  bg-gray-700 my-9"></div>
           </div>
-
+          
           <div
             ref={ref}
             className="gallery relative justify-items-center flex gap-8  md:grid-cols-4 "
@@ -569,6 +320,8 @@ export default function Home({ data }) {
             </button>
             <span className="text-2xl font-bold text-gray-800 mb-4"></span>
             </div>
+            
+          
           <div
             id="banner2"
             className=" relative bg-value w-full  h-screen bg-cover flex flex-col justify-between "
@@ -596,7 +349,7 @@ export default function Home({ data }) {
                     Once minted or bought on OpenSea, please fill out this{" "}
                     <a
                       target="_blank"
-                      href="https://www.gamechangersmovement.com/crew"
+                      href="https://www.gamechangersmovemement.com/crew"
                       rel="noreferrer"
                       className="underline"
                     >
