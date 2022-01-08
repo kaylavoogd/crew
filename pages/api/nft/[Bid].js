@@ -19,6 +19,7 @@ export default function getNftById(req, res){
     contract.methods.totalSupply().call((err,result) => {
         console.log("error: "+err);
         if(result != null){
+            alert(result);
             if(parseInt(req.query.id) <=  parseInt(result) ){
                 res.json(content[req.query.id]);
             }else{
