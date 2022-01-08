@@ -1,5 +1,5 @@
 
-export const phase2_tokenPrice = "0.11";
+export const phase2_tokenPrice = "11";
 export const phase1_tokenPrice = "0.09";
 export const presale_price = "0.08";
 //export const speedy_nodes = "https://speedy-nodes-nyc.moralis.io/76b6a1ab4265c540f2ccd51c/eth/rinkeby"; 
