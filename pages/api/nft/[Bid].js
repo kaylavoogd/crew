@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 const testFolder = '../';
 const fs = require('fs');
-import content from './_metadata1.json';
+import content from './_metadata.json';
 import Web3 from "web3";
 import Web3Modal from "web3modal";
 import { contract_address, contract_abi, buy_price, speedy_nodes} from '../../../config';
@@ -22,9 +22,7 @@ export default function getNftById(req, res){
             if(parseInt(req.query.id) <=  parseInt(result) ){
                 res.json(content[req.query.id]);
             }else{
-                res.json(content[req.query.id]);
-                res.json(result);
-               // res.json("Nft Not Minted Yet!");
+               res.json("Nft Not Minted Yet!");
             }
             
         }
