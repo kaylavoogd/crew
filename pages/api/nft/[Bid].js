@@ -25,7 +25,7 @@ export default function getNftById(req, res){
             }else {
                res.json({
                    'result' : result,
-                   'requestId' : req.query,
+                   'requestId' : req.url,
                    'condition' : parseInt(req.query.id),
                    'resultCondition' : parseInt(result)
                });
