@@ -12,7 +12,6 @@ export default function getNftById(req, res){
     //  all_data[0].url = "asd";
     //console.log(all_data[0]);
     //console.log(content[0]);
-    const  url = window.location.href;
     //const urlId = url.substring(url.lastIndexOf('/') + 1);
     const web3 = new Web3(speedy_nodes);
     const contract = new web3.eth.Contract(contract_abi, contract_address);
