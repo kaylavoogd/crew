@@ -28,7 +28,6 @@ export default function getNftById(req, res){
                    'result' : result,
                    'requestId' : req.query.id,
                    'condition' : parseInt(req.query.id),
-                   'urlId': url,
                    'resultCondition' : parseInt(result)
                });
                //res.json("Nft Not Minted Yet!");
