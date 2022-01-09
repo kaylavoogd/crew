@@ -20,13 +20,13 @@ export default function getNftById(req, res){
     contract.methods.totalSupply().call((err,result) => {
         console.log("error: "+err);
         if(result != null){
-            if(parseInt(req.query.id) <=  parseInt(result) ){
-                res.json(content[req.query.id]);
+            if(parseInt(req.query.Bid) <=  parseInt(result) ){
+                res.json(content[req.query.Bid]);
             }else {
                res.json({
                    'result' : result,
-                   'requestId' : req.url,
-                   'condition' : parseInt(req.query.id),
+                   'requestId' : req.query.Bid,
+                   'condition' : parseInt(req.query.Bid),
                    'resultCondition' : parseInt(result)
                });
                //res.json("Nft Not Minted Yet!");
