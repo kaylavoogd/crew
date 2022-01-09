@@ -13,7 +13,7 @@ export default function getNftById(req, res){
     //console.log(all_data[0]);
     //console.log(content[0]);
     const  url = window.location.href;
-    const urlId = url.substring(url.lastIndexOf('/') + 1);
+    //const urlId = url.substring(url.lastIndexOf('/') + 1);
     const web3 = new Web3(speedy_nodes);
     const contract = new web3.eth.Contract(contract_abi, contract_address);
     //await Web3.givenProvider.enable()
@@ -28,7 +28,7 @@ export default function getNftById(req, res){
                    'result' : result,
                    'requestId' : req.query.id,
                    'condition' : parseInt(req.query.id),
-                   'urlId': urlId,
+                   'urlId': url,
                    'resultCondition' : parseInt(result)
                });
                //res.json("Nft Not Minted Yet!");
