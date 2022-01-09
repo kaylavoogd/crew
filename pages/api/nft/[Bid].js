@@ -23,13 +23,7 @@ export default function getNftById(req, res){
             if(parseInt(req.query.Bid) <=  parseInt(result) ){
                 res.json(content[req.query.Bid]);
             }else {
-               res.json({
-                   'result' : result,
-                   'requestId' : req.query.Bid,
-                   'condition' : parseInt(req.query.Bid),
-                   'resultCondition' : parseInt(result)
-               });
-               //res.json("Nft Not Minted Yet!");
+               res.json("Nft Not Minted Yet!");
             }
             
         }
