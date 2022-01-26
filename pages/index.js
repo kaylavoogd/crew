@@ -83,17 +83,19 @@ export default function Home({ data }) {
       const web3 = new Web3(provider);
   
       web3.eth.net.getId().then((result) => { 
-        setconnectwallettext("Connected");
-      console.log("Network id: "+result)
+      console.log("Network id: "+result);
+      setconnectwallettext("Not Connected");
       if(result !== 1){
           alert("Wrong Network Selected. Select Ethereum Mainnet");
+        } else {
+         setconnectwallettext("Connected");
         }
       })
   
     }else{
       alert("Web3 Not Found. Try refreshing if you have metamask installed.");
     }
-  
+    return false;
   }
   async function fetch_data(){
   
@@ -103,6 +105,7 @@ export default function Home({ data }) {
   
     contract.methods.totalSupply().call((err,result) => {
         console.log("error: "+err);
+      console.log('totalSupply result : ', result);
         if(result != null){
             settotalAvailableSupply(result)
         }
@@ -111,7 +114,7 @@ export default function Home({ data }) {
   }
   async function show_error_alert(error){
     let temp_error = error.message.toString();
-    console.log(temp_error);
+    console.log('temp_error', temp_error);
     let error_list = [
       "It's not time yet",
       "Sent Amount Wrong",
@@ -129,17 +132,23 @@ export default function Home({ data }) {
       "incorrect ether amount",
       "Presale have not started yet.",
       "Presale Ended.",
-      "Sale is Paused.",
+      "Sale is Paused.",,
       "You are not whitelisted.",
-      "Max 3 Nft Per Wallet Allowed."
-      
+      "Max 3 Nft Per Wallet Allowed.",
+      "Whitelist is not active",
     ]
   
+    let foundError = false;
     for(let i=0;i<error_list.length;i++){
       if(temp_error.includes(error_list[i])){
        // set ("Transcation Failed")
+        foundError = true;
         alert(error_list[i]);
       }
+    }
+    
+    if(!foundError) {
+      alert(temp_error);
     }
   }
   function mint_nft(){
@@ -149,23 +158,21 @@ export default function Home({ data }) {
   console.log(mintingcount);
     let current_time = Math.floor(Date.now() / 1000);
   // presale
-    if(current_time > presale_startTime && current_time < phase1_startTime){
-      buy_Presale();
-    }
-    if(current_time > phase1_startTime && current_time < phase2_startTime){
-      buy_phase1();
-    }
-    if(current_time > phase2_startTime ){
-      buy_phase2();
-    }
-    if(current_time < presale_startTime){
-      alert("Sale Not Started Yet.")
-    }
+    
+    presale();
   }
-  async function buy_Presale(){
+    async function presale(){
   
     if(Web3.givenProvider ){ 
+      
+      await connect_wallet();
+      
+      if(connectwallettext !== 'Connected') {
+        return;
+      }
   
+      console.log('connectwallettext', connectwallettext);
+      
       const web3 = new Web3(Web3.givenProvider);
       await Web3.givenProvider.enable()
       const contract = new web3.eth.Contract(contract_abi, contract_address);
@@ -178,16 +185,19 @@ export default function Home({ data }) {
   
       let price = presale_price * parseInt(mintingcount);
       price = Math.round(price * 100) / 100;
-  
+      console.log('price', price);
+      
+      
+      
       try{
-        const estemated_Gas = await contract.methods.buy_Presale(mintingcount.toString()).estimateGas({
+        const estemated_Gas = await contract.methods.presale(mintingcount.toString()).estimateGas({
           from : address, 
           value: web3.utils.toWei(price.toString(),"ether"),
           maxPriorityFeePerGas: null,
           maxFeePerGas: null
         });
         console.log(estemated_Gas)
-        const result = await contract.methods.buy_Presale(mintingcount.toString()).send({
+        const result = await contract.methods.presale(mintingcount.toString()).send({
           from : address,
           value: web3.utils.toWei(price.toString(),"ether"),
           gas: estemated_Gas,
@@ -204,9 +214,15 @@ export default function Home({ data }) {
     }
   
   }
-  async function buy_phase1(){
+  async function mint(){
   
     if(Web3.givenProvider ){ 
+      
+      await connect_wallet();
+      
+      if(connectwallettext !== 'Connected') {
+        return;
+      }  
   
       const web3 = new Web3(Web3.givenProvider);
       await Web3.givenProvider.enable()
@@ -220,16 +236,18 @@ export default function Home({ data }) {
   
       let price = phase1_tokenPrice * parseInt(mintingcount);
       price = Math.round(price * 100) / 100;
-  
+      
+      console.log('price', price);
+      
       try{
-        const estemated_Gas = await contract.methods.buy_phase1(mintingcount.toString()).estimateGas({
+        const estemated_Gas = await contract.methods.mint(mintingcount.toString()).estimateGas({
           from : address, 
           value: web3.utils.toWei(price.toString(),"ether"),
           maxPriorityFeePerGas: null,
           maxFeePerGas: null
         });
         console.log(estemated_Gas)
-        const result = await contract.methods.buy_phase1(mintingcount.toString()).send({
+        const result = await contract.methods.mint(mintingcount.toString()).send({
           from : address,
           value: web3.utils.toWei(price.toString(),"ether"),
           gas: estemated_Gas,
@@ -477,7 +495,16 @@ export default function Home({ data }) {
           <Header />
 
           <div className="flex flex-col  md:absolute right-64 bottom-11   justify-center items-center">
-          <select onChange={e => {setmintingcount(e.currentTarget.value); }} className="text-1xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor">
+            {(connectwallettext !== 'Connected') && (<button
+            onClick={mint_nft}
+              id="cta2"
+              className="  text-3xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor"
+            >
+              CONNECT WALLET
+            </button>)}
+          {(connectwallettext === 'Connected') && (
+            <>
+              <select onChange={e => {setmintingcount(e.currentTarget.value); }} className="text-1xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -487,20 +514,23 @@ export default function Home({ data }) {
                       </select>
 
                                                
-            <button
-            onClick={mint_nft}
-              id="cta2"
-              className="  text-3xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor"
-            >
-              Mint Here
-            </button>
-            <p className="date-text">Jan 26th 10am PST/1pm EST</p>
-            <span className="text-2xl font-bold text-gray-800 mb-1">
-              Total Minted: {totalAvailableSupply} / 7080
-            </span>
-            <span className="text-2xl font-bold text-gray-800 mb-4">
-              {showReleaseDate && coundownText}
-            </span>
+              <button
+              onClick={mint_nft}
+                id="cta2"
+                className="  text-3xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor"
+              >
+                Mint Here
+              </button>
+              <p className="date-text">Jan 26th 10am PST/1pm EST</p>
+              <span className="text-2xl font-bold text-gray-800 mb-1">
+                Total Minted: {totalAvailableSupply} / 3974
+              </span>
+              <span className="text-2xl font-bold text-gray-800 mb-4">
+                {showReleaseDate && coundownText}
+              </span>
+            </>
+          )}
+          
           </div>
         </div>
 
