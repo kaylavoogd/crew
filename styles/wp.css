@@ -14,7 +14,7 @@ main {
   width: 100vw;
 }
 span.text-2xl.font-bold.text-gray-800.mb-1 {
-    display: none;
+  /*  display: none;*/
 }
 .our-mission {
   font-family: "Outfit", sans-serif;
