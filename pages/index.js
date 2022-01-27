@@ -159,7 +159,7 @@ export default function Home({ data }) {
     let current_time = Math.floor(Date.now() / 1000);
   // presale
     
-    presale();
+    mint();
   }
     async function presale(){
   
