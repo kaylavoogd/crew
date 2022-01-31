@@ -523,7 +523,7 @@ export default function Home({ data }) {
               </button>
               <p className="date-text">Jan 26th 10am PST/1pm EST</p>
               <span className="text-2xl font-bold text-gray-800 mb-1">
-                Total Minted: {totalAvailableSupply} / 3974
+                SOLD OUT
               </span>
               <span className="text-2xl font-bold text-gray-800 mb-4">
                 {showReleaseDate && coundownText}
