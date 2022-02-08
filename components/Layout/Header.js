@@ -139,15 +139,6 @@ export default function Header() {
           </a>
         </div>
       </nav>
-      <div className="flex justify-end">
-        <button
-          onClick={() => connect_wallet()}
-          id="cta2"
-          className="border uppercase italic font-bold border-iconColor mb-3 px-4 text-iconColor"
-        >
-          Connect wallet
-        </button>
-      </div>
     </header>
   );
 }
