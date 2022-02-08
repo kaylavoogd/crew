@@ -495,13 +495,19 @@ export default function Home({ data }) {
           <Header />
 
           <div className="flex flex-col  md:absolute right-64 bottom-11   justify-center items-center">
-            {(connectwallettext !== 'Connected') && (<button
+            {/* {(connectwallettext !== 'Connected') && (<button
             onClick={mint_nft}
               id="cta2"
               className="  text-3xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor"
             >
               CONNECT WALLET
-            </button>)}
+            </button>)}  */}
+          <button
+              id="cta2"
+              className="  text-3xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor"
+            >
+              SOLD OUT
+            </button>
           {(connectwallettext === 'Connected') && (
             <>
               <select onChange={e => {setmintingcount(e.currentTarget.value); }} className="text-1xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor">
@@ -523,7 +529,7 @@ export default function Home({ data }) {
               </button>
               <p className="date-text">Jan 26th 10am PST/1pm EST</p>
               <span className="text-2xl font-bold text-gray-800 mb-1">
-                SOLD OUT
+                Total Minted: {totalAvailableSupply} / 3974
               </span>
               <span className="text-2xl font-bold text-gray-800 mb-4">
                 {showReleaseDate && coundownText}
@@ -541,15 +547,79 @@ export default function Home({ data }) {
                 Our Mission
               </h1>
               <section className="grid md:grid-cols-2 items-center">
-                <div
-                  className="about-mission">
-                  <p>Hi! Welcome to the Coalition Crew! This is a limited collection of 5000 unique Cheetah NFTs living on the Ethereum blockchain. This project is technically broken up into three collections.</p>
-                <p>1st Collection - Coalition Crew (OG COLLECTION) Only 1010 avail.
-*Update - Sold out in less than a day!*</p>
-                <p>2nd Collection - Auction Cheetahs - 20 avail. These qualify for VIP access to all live events. The auction begins Jan 8th. Please visit our <a target="_blank" href="http://discord.gg/3nKRBcDS33" rel="noreferrer" className="underline"> Discord</a> for more info on this! </p>
-                <p>3rd Collection - Coalition Crew 2.0 - Only 3970 avail. This will wrap up the collection for the Coalition Crew project. Mint price is .09 ETH and you can mint up to 5. This collection will begin minting Jan 26th at 10am PST/1pm EST.</p>
-                <p>Out of the 5000 total, only 50 qualify for VIP access. Please visit our <a target="_blank" href="http://discord.gg/3nKRBcDS33" rel="noreferrer" className="underline"> Discord</a> for more info on which ones qualify for VIP.</p>
-                  </div>
+                <div className="about-mission">
+                  <p>
+                      Welcome to The Coalition Crew 🐆. The NFT for Game Changers, and
+                      those looking to elevate their network while making a global
+                      impact. What makes this project unique is the collective
+                      intelligence of our community. The utility of the Game Changers
+                      Academy, and the ability to contribute to saving wild cheetahs
+                      from extinction. Our mission is to give people the resources,
+                      network, and guidance they need to truly build a life and
+                      business on THEIR TERMS.
+                  </p>
+                  <p>
+                      This project is technically broken up into three unique
+                      collections
+                  </p>
+                  <p>
+                      The Coalition Crew (OG COLLECTION) Only 1010 avail. These Sold
+                      out in less than a day and the Floor price has already 10Xd!
+                  </p>
+                  <p>
+                      Opensea:{" "}
+                      <a
+                          href="https://opensea.io/collection/coalitioncrew"
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{ textDecoration: 'underline' }}
+                      >
+                          https://opensea.io/collection/coalitioncrew
+                      </a>
+                  </p>
+                  <p>
+                      The Legendary Auction Cheetahs. 20 avail. The average sale price
+                      was 1.5 ETH and this was the #1 trending collection on Opensea.
+                  </p>
+                  <p>
+                      Opensea: {" "}
+                      <a
+                          href="https://opensea.io/collection/coalitioncrewauction"
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{ textDecoration: 'underline' }}
+                      >
+                          https://opensea.io/collection/coalitioncrewauction
+                      </a>
+                  </p>
+                  <p>
+                      Coalition Crew 2.0 - Only 3970 avail. These sold out in less
+                      than a day and the Floor doubled within a couple of days.
+                  </p>
+                  <p>
+                      Opensea: {" "}
+                      <a
+                          href="https://opensea.io/collection/coalition-crew-2-0"
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{ textDecoration: 'underline' }}
+                      >
+                          https://opensea.io/collection/coalition-crew-2-0
+                      </a>
+                  </p>
+                  <p>
+                      The Coalition Crew has NBA players, NFL Pro-bowlers, MLB
+                      players, Olympians, Crypto Whales, Entertainers, Celebrities,
+                      and Big Investors who have organically joined their project.
+                  </p>
+                  <p>
+                      This is a unique opportunity to get in on the ground floor of a
+                      very promising and proven project. If you have ever thought about
+                      getting into NFTs this would be the one to get into. This is for
+                      those wanting to make a real impact while being connected to an
+                      elite society of true Game-changers.
+                  </p>
+                </div>
                 <div className="flex items-center justify-center relative">
                   {" "}
                   <motion.div
@@ -597,7 +667,7 @@ export default function Home({ data }) {
           </div>
           <div className="flex flex-col  right-64 bottom-11   justify-center items-center">
             <button id="cta2" className=" roadmap  text-3xl bg-yellow-300 uppercase italic font-bold  mb-2 px-16 py-4  text-iconColor">
-              <a target="_blank" href="https://drive.google.com/file/d/1GFBtAyqhEv1PqX94O3r7y4tbThliU9Ib/view" rel="noreferrer">The Roadmap</a>
+              <a target="_blank" href="https://drive.google.com/file/d/1irwEOmp1Ytzrvb3jKKf7KL00o4r_5ZpE/view" rel="noreferrer">The Roadmap</a>
             </button>
             <span className="text-2xl font-bold text-gray-800 mb-4"></span>
             </div>
