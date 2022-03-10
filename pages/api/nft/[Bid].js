@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 const testFolder = '../';
 const fs = require('fs');
-import content from './metadata.json';
+import content from './_metadata.json';
 import Web3 from "web3";
 import Web3Modal from "web3modal";
 import { contract_address, contract_abi, buy_price, speedy_nodes} from '../../../config';
